@@ -20,9 +20,10 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   // Criar array com itens duplicados para o loop infinito
-  const allSlides = [...profissionais, ...profissionais.slice(0, 3)];
+  const allSlides = [...profissionais, ...profissionais.slice(0, isMobile ? 1 : 3)];
 
   const fetchProfissionais = useCallback(async () => {
     try {
@@ -59,6 +60,15 @@ export default function Home() {
     };
   }, [fetchProfissionais]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const nextSlide = () => {
     if (isTransitioning) return;
     
@@ -82,11 +92,11 @@ export default function Home() {
 
   // Configurar intervalo para trocar slides automaticamente
   useEffect(() => {
-    if (profissionais.length > 3) {
+    if (profissionais.length > (isMobile ? 1 : 3)) {
       const interval = setInterval(nextSlide, 5000); // Muda a cada 5 segundos
       return () => clearInterval(interval);
     }
-  }, [profissionais.length, isTransitioning]);
+  }, [profissionais.length, isTransitioning, isMobile]);
 
   const handleProfissionalClick = async (profissional: Profissional) => {
     try {
@@ -159,15 +169,15 @@ export default function Home() {
               <div 
                 className="flex transition-transform duration-500 ease-in-out w-full h-full gap-4"
                 style={{
-                  transform: `translateX(-${currentSlide * (100 / 3)}%)`,
-                  width: `${(allSlides.length / 3) * 100}%`,
+                  transform: `translateX(-${currentSlide * 100}%)`,
+                  width: `${allSlides.length * 100}%`,
                   transitionDuration: isTransitioning ? '500ms' : '0ms'
                 }}
               >
                 {allSlides.map((profissional, index) => (
                   <div
                     key={`${profissional.id}-${index}`}
-                    className="w-1/3 h-full flex-shrink-0 relative p-2 cursor-pointer"
+                    className="w-full md:w-1/3 h-full flex-shrink-0 relative p-2 cursor-pointer"
                     onClick={() => handleProfissionalClick(profissional)}
                   >
                     <div
@@ -204,7 +214,7 @@ export default function Home() {
               </div>
 
               {/* Botão de navegação - apenas para direita */}
-              {profissionais.length > 3 && (
+              {profissionais.length > (isMobile ? 1 : 3) && (
                 <button
                   onClick={nextSlide}
                   className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-10"
