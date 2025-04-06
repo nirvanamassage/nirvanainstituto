@@ -169,8 +169,8 @@ export default function Home() {
               <div 
                 className="flex transition-transform duration-500 ease-in-out w-full h-full gap-4"
                 style={{
-                  transform: `translateX(-${currentSlide * 100}%)`,
-                  width: `${allSlides.length * 100}%`,
+                  transform: `translateX(-${currentSlide * (100 / (isMobile ? 1 : 3))}%)`,
+                  width: `${(allSlides.length / (isMobile ? 1 : 3)) * 100}%`,
                   transitionDuration: isTransitioning ? '500ms' : '0ms'
                 }}
               >
@@ -180,33 +180,18 @@ export default function Home() {
                     className="w-full md:w-1/3 h-full flex-shrink-0 relative p-2 cursor-pointer"
                     onClick={() => handleProfissionalClick(profissional)}
                   >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center border-4 border-[#D4AF37] rounded-lg overflow-hidden m-2 transition-transform duration-300 hover:scale-[1.02]"
-                      style={{
-                        backgroundImage: `url(${
-                          profissional.imagens[0]?.startsWith('http')
-                            ? profissional.imagens[0]
-                            : `${supabase.storage.from('profissionais').getPublicUrl(profissional.imagens[0]).data.publicUrl}`
-                        })`
-                      }}
-                    >
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent h-24" />
-                      <div className="absolute bottom-[-8px] left-0 w-full text-white">
-                        <div className="bg-[#4169E1]/70 pl-3 pr-1 py-2 w-full h-[60px] flex justify-between items-center">
-                          <div>
-                            <h3 className="text-2xl font-bold drop-shadow-lg -mt-2">
-                              {profissional.nome}
-                            </h3>
-                            <p className="text-base text-white/90 drop-shadow-lg whitespace-nowrap overflow-hidden text-ellipsis">
-                              {profissional.especialidade}
-                            </p>
-                          </div>
-                          <img 
-                            src="/nirvana-logo.png" 
-                            alt="Nirvana Logo" 
-                            className="h-[65px] object-contain mt-2"
-                          />
-                        </div>
+                    <div className="relative h-full rounded-lg overflow-hidden">
+                      <img
+                        src={profissional.imagens[0].startsWith('http') 
+                          ? profissional.imagens[0] 
+                          : `${supabase.storage.from('profissionais').getPublicUrl(profissional.imagens[0]).data.publicUrl}`}
+                        alt={profissional.nome}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 className="text-white text-xl font-semibold">{profissional.nome}</h3>
+                        <p className="text-gray-200 text-sm">{profissional.especialidade}</p>
                       </div>
                     </div>
                   </div>
