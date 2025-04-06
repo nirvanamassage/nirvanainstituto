@@ -215,48 +215,48 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="p-2">
-      <h1 className="text-3xl font-bold text-[#D4AF37] mb-8">Dashboard</h1>
+    <div className="p-2 sm:p-4">
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] mb-4 sm:mb-8">Dashboard</h1>
       
       {/* Cards do Dashboard */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 pl-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
         {/* Card do Google Analytics */}
         <Link
           to="/admin/analytics"
-          className="bg-white p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow w-dashboard-card h-dashboard-card"
+          className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
         >
-          <div className="flex items-center gap-1">
-            <BarChart3 className="w-8 h-8 text-[#D4AF37]" />
+          <div className="flex items-center gap-1 sm:gap-2">
+            <BarChart3 className="w-6 sm:w-8 h-6 sm:h-8 text-[#D4AF37]" />
             <div className="flex flex-col">
-              <h3 className="text-base font-semibold text-gray-700 whitespace-nowrap">Analytics Google</h3>
-              <p className="text-sm text-gray-500 whitespace-nowrap">Estatísticas Google</p>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-700 whitespace-nowrap">Analytics Google</h3>
+              <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Estatísticas Google</p>
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-3 mt-4">
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-[10px] text-gray-500">Visualizações</p>
-              <p className="text-lg font-semibold text-[#D4AF37]">{analyticsData?.pageViews || 0}</p>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-3 sm:mt-4">
+            <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+              <p className="text-[9px] sm:text-[10px] text-gray-500">Visualizações</p>
+              <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{analyticsData?.pageViews || 0}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-[10px] text-gray-500">Usuários Novos</p>
-              <p className="text-lg font-semibold text-[#D4AF37]">{analyticsData?.userRetention.newUsers || 0}</p>
+            <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+              <p className="text-[9px] sm:text-[10px] text-gray-500">Usuários Novos</p>
+              <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{analyticsData?.userRetention.newUsers || 0}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-[10px] text-gray-500">Taxa de Rejeição</p>
-              <p className="text-lg font-semibold text-[#D4AF37]">{analyticsData?.engagementData.bounceRate || 0}%</p>
+            <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+              <p className="text-[9px] sm:text-[10px] text-gray-500">Taxa de Rejeição</p>
+              <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{analyticsData?.engagementData.bounceRate || 0}%</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-[10px] text-gray-500">Tempo Médio</p>
-              <p className="text-lg font-semibold text-[#D4AF37]">{Math.floor((analyticsData?.engagementData.avgTimeOnPage || 0) / 60)}min</p>
+            <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+              <p className="text-[9px] sm:text-[10px] text-gray-500">Tempo Médio</p>
+              <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{Math.floor((analyticsData?.engagementData.avgTimeOnPage || 0) / 60)}min</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-[10px] text-gray-500">Eventos</p>
-              <p className="text-lg font-semibold text-[#D4AF37]">{analyticsData?.events || 0}</p>
+            <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+              <p className="text-[9px] sm:text-[10px] text-gray-500">Eventos</p>
+              <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{analyticsData?.events || 0}</p>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-[10px] text-gray-500">Usuários Retornantes</p>
-              <p className="text-lg font-semibold text-[#D4AF37]">{analyticsData?.userRetention.returningUsers || 0}</p>
+            <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+              <p className="text-[9px] sm:text-[10px] text-gray-500">Usuários Retornantes</p>
+              <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{analyticsData?.userRetention.returningUsers || 0}</p>
             </div>
           </div>
         </Link>
@@ -264,41 +264,41 @@ export default function Dashboard() {
         {/* Card de Analytics Site */}
         <Link
           to="/admin/site"
-          className="bg-white p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow w-dashboard-card h-dashboard-card"
+          className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
         >
           <div className="flex flex-col gap-2 h-full">
-            <div className="flex items-center gap-1">
-              <PieChart className="w-8 h-8 text-[#D4AF37]" />
+            <div className="flex items-center gap-1 sm:gap-2">
+              <PieChart className="w-6 sm:w-8 h-6 sm:h-8 text-[#D4AF37]" />
               <div className="flex flex-col">
-                <h3 className="text-base font-semibold text-gray-700 whitespace-nowrap">Analytics Site</h3>
-                <p className="text-sm text-gray-500 whitespace-nowrap">Interações</p>
+                <h3 className="text-sm sm:text-base font-semibold text-gray-700 whitespace-nowrap">Analytics Site</h3>
+                <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Interações</p>
               </div>
             </div>
           
             <div className="grid grid-cols-2 gap-2 mt-1">
               <div className="bg-gray-50 p-2 rounded-lg">
-                <p className="text-[10px] text-gray-500">Cliques WhatsApp</p>
-                <p className="text-lg font-semibold text-[#D4AF37]">{siteData.whatsappClicks}</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500">Cliques WhatsApp</p>
+                <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{siteData.whatsappClicks}</p>
               </div>
               <div className="bg-gray-50 p-2 rounded-lg">
-                <p className="text-[10px] text-gray-500">Visitas Blog</p>
-                <p className="text-lg font-semibold text-[#D4AF37]">{siteData.blogViews}</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500">Visitas Blog</p>
+                <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{siteData.blogViews}</p>
               </div>
               <div className="bg-gray-50 p-2 rounded-lg">
-                <p className="text-[10px] text-gray-500">Cliques Serviços</p>
-                <p className="text-lg font-semibold text-[#D4AF37]">{siteData.servicosClicks}</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500">Cliques Serviços</p>
+                <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{siteData.servicosClicks}</p>
               </div>
               <div className="bg-gray-50 p-2 rounded-lg">
-                <p className="text-[10px] text-gray-500">Cliques Profissionais</p>
-                <p className="text-lg font-semibold text-[#D4AF37]">{siteData.profissionaisClicks}</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500">Cliques Profissionais</p>
+                <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{siteData.profissionaisClicks}</p>
               </div>
               <div className="bg-gray-50 p-2 rounded-lg">
-                <p className="text-[10px] text-gray-500">WhatsApp Prof.</p>
-                <p className="text-lg font-semibold text-[#D4AF37]">{siteData.whatsappProfissionais}</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500">WhatsApp Prof.</p>
+                <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{siteData.whatsappProfissionais}</p>
               </div>
               <div className="bg-gray-50 p-2 rounded-lg">
-                <p className="text-[10px] text-gray-500">Total Visitas</p>
-                <p className="text-lg font-semibold text-[#D4AF37]">{siteData.totalViews}</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500">Total Visitas</p>
+                <p className="text-base sm:text-lg font-semibold text-[#D4AF37]">{siteData.totalViews}</p>
               </div>
             </div>
           </div>

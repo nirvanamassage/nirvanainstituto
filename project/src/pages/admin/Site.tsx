@@ -486,45 +486,45 @@ export default function Site() {
   const renderProfissionaisDashboard = () => {
     console.log('Renderizando Profissionais Dashboard:', data.profissionais);
     return (
-      <div className="space-y-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Cliques Carrossel Tela Inicial</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="space-y-4 sm:space-y-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">Cliques Carrossel Tela Inicial</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 sm:gap-3">
           {data.profissionais.map((profissional) => (
-            <div key={profissional.id} className="bg-white rounded-lg shadow-md p-4 flex items-center space-x-2">
+            <div key={profissional.id} className="bg-white rounded-lg shadow-md p-3 sm:p-4 flex items-center space-x-2">
               <div className="p-2 rounded-full bg-[#fff5e6]">
                 <Users className="w-3 h-3 text-[#D4AF37]" />
               </div>
               <div>
                 <p className="text-xs font-medium text-gray-900">Total de interações</p>
-                <p className="text-xl font-bold text-[#D4AF37]">{profissional.clicks + profissional.whatsappClicks}</p>
-                <p className="text-[11px] text-gray-500">{profissional.nome}</p>
+                <p className="text-lg sm:text-xl font-bold text-[#D4AF37]">{profissional.clicks + profissional.whatsappClicks}</p>
+                <p className="text-[10px] sm:text-[11px] text-gray-500">{profissional.nome}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Cliques WhatsApp Profissional</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">Cliques WhatsApp Profissional</h2>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 sm:gap-3 mb-4 sm:mb-8">
           {data.profissionais.map((profissional) => (
-            <div key={profissional.id} className="bg-white rounded-lg shadow-md p-4 flex items-center space-x-2">
+            <div key={profissional.id} className="bg-white rounded-lg shadow-md p-3 sm:p-4 flex items-center space-x-2">
               <div className="p-2 rounded-full bg-[#fff5e6]">
                 <MessageSquare className="w-3 h-3 text-[#D4AF37]" />
               </div>
               <div>
                 <p className="text-xs font-medium text-gray-900">Cliques WhatsApp</p>
-                <p className="text-xl font-bold text-[#D4AF37]">{profissional.whatsappClicks}</p>
-                <p className="text-[11px] text-gray-500">{profissional.nome}</p>
+                <p className="text-lg sm:text-xl font-bold text-[#D4AF37]">{profissional.whatsappClicks}</p>
+                <p className="text-[10px] sm:text-[11px] text-gray-500">{profissional.nome}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold mb-4 text-center">Distribuição de interações por profissional</h3>
-          <div className="flex justify-between gap-8">
-            <div className="w-[350px] h-[250px]">
-              <p className="text-sm text-gray-500 text-center mb-2">Proporção de interações por profissional</p>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-4 text-center">Distribuição de interações por profissional</h3>
+          <div className="flex flex-col lg:flex-row justify-between gap-4 sm:gap-8">
+            <div className="w-full lg:w-[350px] h-[250px]">
+              <p className="text-xs sm:text-sm text-gray-500 text-center mb-2">Proporção de interações por profissional</p>
               <Pie
                 data={{
                   labels: data.profissionais.map(prof => prof.nome),
@@ -562,13 +562,13 @@ export default function Site() {
                   maintainAspectRatio: false,
                   plugins: {
                     legend: {
-                      position: 'left' as const,
+                      position: window.innerWidth < 768 ? 'bottom' : 'left' as const,
                       align: 'center' as const,
                       labels: {
                         boxWidth: 15,
-                        padding: 20,
+                        padding: window.innerWidth < 768 ? 10 : 20,
                         font: {
-                          size: 12
+                          size: window.innerWidth < 768 ? 10 : 12
                         },
                         color: '#000000'
                       },
@@ -581,8 +581,8 @@ export default function Site() {
                 }}
               />
             </div>
-            <div className="w-[350px] h-[250px]">
-              <p className="text-sm text-gray-500 text-center mb-2">Proporção de cliques WhatsApp por profissional</p>
+            <div className="w-full lg:w-[350px] h-[250px]">
+              <p className="text-xs sm:text-sm text-gray-500 text-center mb-2">Proporção de cliques WhatsApp por profissional</p>
               <Pie
                 data={{
                   labels: data.profissionais.map(prof => prof.nome),
@@ -620,13 +620,13 @@ export default function Site() {
                   maintainAspectRatio: false,
                   plugins: {
                     legend: {
-                      position: 'left' as const,
+                      position: window.innerWidth < 768 ? 'bottom' : 'left' as const,
                       align: 'center' as const,
                       labels: {
                         boxWidth: 15,
-                        padding: 20,
+                        padding: window.innerWidth < 768 ? 10 : 20,
                         font: {
-                          size: 12
+                          size: window.innerWidth < 768 ? 10 : 12
                         },
                         color: '#000000'
                       },
@@ -841,14 +841,14 @@ export default function Site() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-[#D4AF37] mb-4">Dashboards do Site</h1>
+    <div className="p-2 sm:p-6">
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] mb-4">Dashboards do Site</h1>
 
       {/* Filtro de Período */}
-      <div className="flex gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-6 overflow-x-auto">
         <button
           onClick={() => setSelectedDays(0)}
-          className={`px-4 py-2 rounded-md text-sm font-medium ${
+          className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap ${
             selectedDays === 0
               ? 'bg-[#D4AF37] text-white'
               : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
@@ -858,7 +858,7 @@ export default function Site() {
         </button>
         <button
           onClick={() => setSelectedDays(1)}
-          className={`px-4 py-2 rounded-md text-sm font-medium ${
+          className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap ${
             selectedDays === 1
               ? 'bg-[#D4AF37] text-white'
               : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
@@ -868,7 +868,7 @@ export default function Site() {
         </button>
         <button
           onClick={() => setSelectedDays(5)}
-          className={`px-4 py-2 rounded-md text-sm font-medium ${
+          className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap ${
             selectedDays === 5
               ? 'bg-[#D4AF37] text-white'
               : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
@@ -880,7 +880,7 @@ export default function Site() {
           <button
             key={days}
             onClick={() => setSelectedDays(days)}
-            className={`px-4 py-2 rounded-md text-sm font-medium ${
+            className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium whitespace-nowrap ${
               selectedDays === days
                 ? 'bg-[#D4AF37] text-white'
                 : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
@@ -892,10 +892,10 @@ export default function Site() {
       </div>
 
       {/* Tabs de navegação */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-wrap gap-2 mb-6 overflow-x-auto">
         <button
           onClick={() => setActiveTab('home')}
-          className={`px-4 py-2 rounded-md flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-2 rounded-md flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'home' 
               ? 'bg-[#D4AF37] text-white' 
               : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -906,7 +906,7 @@ export default function Site() {
         </button>
         <button
           onClick={() => setActiveTab('whatsapp')}
-          className={`px-4 py-2 rounded-md flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-2 rounded-md flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'whatsapp' 
               ? 'bg-[#D4AF37] text-white' 
               : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -917,7 +917,7 @@ export default function Site() {
         </button>
         <button
           onClick={() => setActiveTab('blog')}
-          className={`px-4 py-2 rounded-md flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-2 rounded-md flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'blog' 
               ? 'bg-[#D4AF37] text-white' 
               : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -928,7 +928,7 @@ export default function Site() {
         </button>
         <button
           onClick={() => setActiveTab('profissionais')}
-          className={`px-4 py-2 rounded-md flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-2 rounded-md flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'profissionais' 
               ? 'bg-[#D4AF37] text-white' 
               : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -939,7 +939,7 @@ export default function Site() {
         </button>
         <button
           onClick={() => setActiveTab('servicos')}
-          className={`px-4 py-2 rounded-md flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-2 rounded-md flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap ${
             activeTab === 'servicos' 
               ? 'bg-[#D4AF37] text-white' 
               : 'bg-white text-gray-600 hover:bg-gray-50'
