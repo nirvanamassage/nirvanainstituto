@@ -307,36 +307,36 @@ export default function Dashboard() {
         {/* Card do Blog */}
         <Link
           to="/admin/site?tab=blog"
-          className="bg-white p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow w-dashboard-card h-dashboard-card"
+          className="bg-white p-2 sm:p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
         >
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-4">
-              <FileText className="w-8 h-8 text-[#D4AF37]" />
+          <div className="flex flex-col gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <FileText className="w-6 sm:w-8 h-6 sm:h-8 text-[#D4AF37]" />
               <div className="flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-700 whitespace-nowrap">Blog</h3>
-                <p className="text-sm text-gray-500 whitespace-nowrap">Publicações</p>
+                <h3 className="text-sm sm:text-lg font-semibold text-gray-700 whitespace-nowrap">Blog</h3>
+                <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Publicações</p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 mt-2 max-h-[250px] overflow-y-auto">
+            <div className="flex flex-col gap-2 sm:gap-3 mt-1 sm:mt-2 max-h-[200px] sm:max-h-[250px] overflow-y-auto">
               {blogPosts && blogPosts.length > 0 ? (
                 blogPosts.map((post) => (
-                  <div key={post.id} className="flex items-center gap-3">
+                  <div key={post.id} className="flex items-center gap-2 sm:gap-3">
                     <img
                       src={post.image}
                       alt={post.title}
-                      className="w-12 h-12 rounded object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover"
                     />
                     <div>
-                      <p className="text-sm font-medium text-gray-700">
+                      <p className="text-xs sm:text-sm font-medium text-gray-700">
                         {post.title.replace('Massagem ', '')}
                       </p>
-                      <p className="text-sm font-semibold text-[#D4AF37]">{post.clicks} cliques</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[#D4AF37]">{post.clicks} cliques</p>
                     </div>
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-gray-500">Nenhum post encontrado</p>
+                <p className="text-xs sm:text-sm text-gray-500">Nenhum post encontrado</p>
               )}
             </div>
           </div>
@@ -345,38 +345,38 @@ export default function Dashboard() {
         {/* Card de Serviços */}
         <Link
           to="/admin/site?tab=servicos"
-          className="bg-white p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow w-dashboard-card h-dashboard-card"
+          className="bg-white p-2 sm:p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
         >
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-4">
-              <Briefcase className="w-8 h-8 text-[#D4AF37]" />
+          <div className="flex flex-col gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Briefcase className="w-6 sm:w-8 h-6 sm:h-8 text-[#D4AF37]" />
               <div className="flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-700 whitespace-nowrap">Serviços</h3>
-                <p className="text-sm text-gray-500 whitespace-nowrap">Terapias</p>
+                <h3 className="text-sm sm:text-lg font-semibold text-gray-700 whitespace-nowrap">Serviços</h3>
+                <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Terapias</p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 mt-2 max-h-[250px] overflow-y-auto">
+            <div className="flex flex-col gap-2 sm:gap-3 mt-1 sm:mt-2 max-h-[200px] sm:max-h-[250px] overflow-y-auto">
               {servicos && servicos.length > 0 ? (
                 servicos.map((servico) => (
-                  <div key={servico.id} className="flex items-center gap-3">
+                  <div key={servico.id} className="flex items-center gap-2 sm:gap-3">
                     <img
                       src={servico.imagem.startsWith('http') 
                         ? servico.imagem 
                         : `${supabase.storage.from('servicos').getPublicUrl(servico.imagem).data.publicUrl}`}
                       alt={servico.titulo}
-                      className="w-12 h-12 rounded object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover"
                     />
                     <div>
-                      <p className="text-sm font-medium text-gray-700">
+                      <p className="text-xs sm:text-sm font-medium text-gray-700">
                         {servico.titulo.replace('Massagem ', '')}
                       </p>
-                      <p className="text-sm font-semibold text-[#D4AF37]">{servico.clicks} cliques</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[#D4AF37]">{servico.clicks} cliques</p>
                     </div>
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-gray-500">Nenhum serviço encontrado</p>
+                <p className="text-xs sm:text-sm text-gray-500">Nenhum serviço encontrado</p>
               )}
             </div>
           </div>
@@ -385,37 +385,37 @@ export default function Dashboard() {
         {/* Card de Profissionais */}
         <Link
           to="/admin/site?tab=profissionais"
-          className="bg-white p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow w-dashboard-card h-dashboard-card"
+          className="bg-white p-2 sm:p-3 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
         >
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-4">
-              <Users className="w-8 h-8 text-[#D4AF37]" />
+          <div className="flex flex-col gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Users className="w-6 sm:w-8 h-6 sm:h-8 text-[#D4AF37]" />
               <div className="flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-700 whitespace-nowrap">Profissionais</h3>
-                <p className="text-sm text-gray-500 whitespace-nowrap">Equipe</p>
+                <h3 className="text-sm sm:text-lg font-semibold text-gray-700 whitespace-nowrap">Profissionais</h3>
+                <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Equipe</p>
               </div>
             </div>
             
-            <div className="flex flex-col gap-3 mt-2 max-h-[250px] overflow-y-auto">
+            <div className="flex flex-col gap-2 sm:gap-3 mt-1 sm:mt-2 max-h-[200px] sm:max-h-[250px] overflow-y-auto">
               {profissionais && profissionais.length > 0 ? (
                 profissionais.map((profissional) => (
-                  <div key={profissional.id} className="flex items-center gap-3">
+                  <div key={profissional.id} className="flex items-center gap-2 sm:gap-3">
                     <img 
                       src={profissional.imagens[0].startsWith('http') 
                         ? profissional.imagens[0] 
                         : `${supabase.storage.from('profissionais').getPublicUrl(profissional.imagens[0]).data.publicUrl}`
                       }
                       alt={profissional.nome}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                     />
                     <div>
-                      <p className="text-sm font-medium text-gray-700">{profissional.nome}</p>
-                      <p className="text-sm font-semibold text-[#D4AF37]">{profissional.cliques} cliques</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-700">{profissional.nome}</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[#D4AF37]">{profissional.cliques} cliques</p>
                     </div>
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-gray-500">Nenhum profissional encontrado</p>
+                <p className="text-xs sm:text-sm text-gray-500">Nenhum profissional encontrado</p>
               )}
             </div>
           </div>
