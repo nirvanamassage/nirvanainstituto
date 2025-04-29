@@ -84,7 +84,7 @@ const Hero = () => {
                 className="mt-4"
               >
                 <a
-                  href="https://wa.me/5515988340100"
+                  href="https://wa.me/5515992432112"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-8 py-4 border-2 border-[#D4AF37] text-xl font-medium rounded-full text-white bg-transparent hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-lg group"

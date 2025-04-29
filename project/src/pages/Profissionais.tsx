@@ -207,7 +207,7 @@ export default function Profissionais() {
                           
                           // Abrir WhatsApp
                           const mensagem = `GOSTARIA DE MARCAR UMA MASSAGEM COM A PROFISSIONAL ${profissional.nome.toUpperCase()}`;
-                          window.open(`https://wa.me/5515988340100?text=${encodeURIComponent(mensagem)}`, '_blank');
+                          window.open(`https://wa.me/5515992432112?text=${encodeURIComponent(mensagem)}`, '_blank');
                         } catch (error) {
                           console.error('Erro ao registrar clique:', error);
                         }

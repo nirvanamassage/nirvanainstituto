@@ -22,7 +22,7 @@ export default function WhatsAppButton() {
     }
 
     // Abrir WhatsApp
-    window.open('https://wa.me/5515988340100', '_blank');
+    window.open('https://wa.me/55', '_blank');
   };
 
   return (
